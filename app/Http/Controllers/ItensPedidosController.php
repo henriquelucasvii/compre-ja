@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\ItensPedido;
-use App\Models\Pedido; // Assumindo que você tem um model Pedido principal
+use App\Models\Pedido; 
 use Illuminate\Support\Facades\DB;
 
 class ItensPedidosController extends Controller
@@ -14,17 +14,12 @@ class ItensPedidosController extends Controller
      */
     public function index()
     {
-        // Se ItensPedido for o model principal do pedido, mantenha assim.
-        // Se houver um model Pedido, o ideal seria Pedido::with('itens.produto')->get();
-        $itensPedidos = ItensPedido::with('itens.produto')->get();
+
+        $itensPedidos = ItensPedido::with('itens.pedido')->get();
 
         return response()->json($itensPedidos, 200);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * Normalmente não utilizado em APIs, apenas para retornar views (HTML).
-     */
     public function create()
     {
         return response()->json(['message' => 'Método não utilizado em API. Use o método POST para /itens-pedidos'], 405);
