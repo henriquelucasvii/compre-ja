@@ -21,7 +21,7 @@ class EnsurePedidoOwner
         $pedidoId = $request->route('id');
         if ($pedidoId) {
             $pedidoId = Pedido::find($pedidoId);
-            if (!$pedidoId || !$pedidoId->user_id !== $user->id) {
+            if (!$pedidoId || ($pedidoId->user_id !== $user->id)) {
                 return response()->json(['message' => 'Acesso negado. Você não é o dono deste pedido.'], 403);
             }
         }
