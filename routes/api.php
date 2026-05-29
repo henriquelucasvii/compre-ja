@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->group(function () {
         Route::get('/', [ProdutosController::class, 'index']);
         Route::post('/', [ProdutosController::class, 'store']);
         Route::get('/{id}', [ProdutosController::class, 'show']);
-        Route::put('/{id}', [ProdutosController::class, 'update']);
-        Route::delete('/{id}', [ProdutosController::class, 'destroy']);
+        Route::put('/{id}', [ProdutosController::class, 'update'])->middleware('produto.owner');
+        Route::delete('/{id}', [ProdutosController::class, 'destroy'])->middleware('produto.owner');
     });
 
     Route::prefix('pedidos')->group(function () {

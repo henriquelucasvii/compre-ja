@@ -37,5 +37,6 @@ class Kernel extends HttpKernel
      */
     protected $routeMiddleware = [
         'pedido.owner' => \App\Http\Middleware\EnsurePedidoOwner::class,
+        'produto.owner' => \App\Http\Middleware\EnsurePedidoOwner::class
     ];
 }
